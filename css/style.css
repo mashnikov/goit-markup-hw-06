@@ -25,14 +25,13 @@
 абзацы в секции чем мы занимаемся  font-family: Roboto; font-weight: bold;
 */
 
-/* outline: 2px solid tomato - поставить в каждый (блок), для удобства верстки */
-
 /* в каждую ссылку, кнопку добавить атрибут arial-label 
 оптимизировать все изображения*/
 
 :root {
   --primary-text-color: #757575;
   --secondary-text-color: #212121;
+  --placeholder-text-color: rgba(117, 117, 117, 0.5);
   --logo-color: #000000;
   --primary-accent-color: #2196f3;
   --additional-accent-color: #188ce8;
@@ -506,10 +505,11 @@
   padding-bottom: 40px;
 }
 
-.subscribe-container {
+.subscribe-form {
   padding-top: 12px;
   padding-bottom: 35px;
-  margin-left: auto;
+  margin-left: 93px;
+  flex-grow: 1;
 }
 
 .footer .logo {
@@ -543,7 +543,7 @@
 }
 
 .footer .text {
-  display: inline-block;
+  display: block;
   margin-bottom: 20px;
   color: var(--white-color);
   font-weight: 700;
@@ -572,18 +572,73 @@
   background-color: var(--primary-accent-color);
 }
 
-.footer .subscribe-button {
+.footer-input-container {
   display: flex;
+}
+
+.footer-form-field {
+  position: relative;
+
+  flex-grow: 1;
+}
+
+.footer-form-label {
+  position: absolute;
+  top: 30%;
+  left: 16px;
+
+  display: block;
+  color: var(--footer-adress-color);
+  font-size: 16px;
+  line-height: 1.25;
+
+  transition: color var(--transition-duration) var(--timing-function);
+}
+
+.email-input-field {
+  display: block;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-left: 79px;
+  padding-right: 16px;
+  height: 50px;
+  width: 100%;
+  background-color: transparent;
+
+  color: var(--white-color);
+  font-size: 16px;
+  line-height: 1.25;
+
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.15));
+  border-radius: 4px;
+
+  transition: border-color var(--transition-duration) var(--timing-function);
+}
+
+.footer-form-field:focus-within > .footer-form-label {
+  color: var(--white-color);
+  border-color: var(--white-color);
+}
+
+.footer-form-field:focus-within > .email-input-field {
+  border-color: var(--white-color);
+}
+
+.form-button {
+  display: flex;
+  height: 50px;
+  min-width: 200px;
   align-items: center;
   justify-content: center;
-  margin-left: auto;
+  margin-left: 12px;
   padding: 10px 29px;
-  background: var(--primary-accent-color);
+  background-color: var(--primary-accent-color);
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
   border-radius: 4px;
   border-width: 0px;
 
-  font-weight: 700px;
+  font-weight: 700;
   color: var(--white-color);
   font-size: 16px;
   line-height: 1.87;
@@ -598,8 +653,8 @@
   margin-left: 10px;
 }
 
-.subscribe-button:hover,
-.subscribe-button:focus {
+.form-button:hover,
+.form-button:focus {
   background-color: var(--additional-accent-color);
 }
 
@@ -789,7 +844,7 @@
 
   transform: scale(1);
   opacity: 1;
-  transform-origin: bottom;
+  transform-origin: center;
   transition: transform var(--transition-duration) var(--timing-function),
     opacity var(--transition-duration) var(--timing-function);
 }
@@ -797,7 +852,7 @@
 .backdrop.is-hidden {
   visibility: hidden;
   pointer-events: none;
-  transform: scale(0);
+  transform: scale(1.5);
   opacity: 0;
 }
 
@@ -807,9 +862,12 @@
   left: 50%;
   transform: translate(-50%, -50%);
 
-  min-width: 528px;
+  width: 528px;
   min-height: 581px;
-  padding: 40px;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  padding-right: 43.5px;
+  padding-left: 36.5px;
 
   background: var(--white-color);
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
@@ -844,4 +902,182 @@
 .modal-close-button:hover .modal-close-button-icon,
 .modal-close-button:focus .modal-close-button-icon {
   fill: var(--primary-accent-color);
+}
+
+/* стили полей формы модального окна */
+.form-field {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.form-input {
+  padding-top: 11px;
+  padding-bottom: 11px;
+  padding-left: 42px;
+  padding-right: 12px;
+
+  border: 1px solid rgba(33, 33, 33, 0.2);
+  border-radius: 4px;
+
+  transition: border-color var(--timing-function) var(--transition-duration);
+}
+
+.form-input:focus,
+.form-input:not(:placeholder-shown),
+.form-textarea:focus,
+.form-textarea:not(:placeholder-shown) {
+  border-color: var(--primary-accent-color);
+  /* outline: none; */
+}
+
+.form-text {
+  display: block;
+  margin-bottom: 38px;
+
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 1.15;
+  text-align: center;
+  color: var(--secondary-text-color);
+}
+
+.form-label {
+  position: absolute;
+  top: 50%;
+  left: 42px;
+  transform: translateY(-50%);
+
+  font-size: 12px;
+  line-height: 1.17;
+  letter-spacing: 0.01em;
+  transition: transform var(--timing-function) var(--transition-duration),
+    color var(--timing-function) var(--transition-duration);
+}
+
+.form-input:focus + .form-label,
+.form-input:not(:placeholder-shown) + .form-label {
+  transform: translate(-26px, -36px);
+  color: var(--primary-accent-color);
+}
+
+.modal-input-icon {
+  position: absolute;
+  top: 50%;
+  left: 16px;
+  transform: translateY(-50%);
+
+  transition: fill var(--timing-function) var(--transition-duration);
+}
+
+.form-input:focus ~ .modal-input-icon,
+.form-input:not(:placeholder-shown) ~ .modal-input-icon {
+  fill: var(--primary-accent-color);
+}
+
+/* .textarea-field {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+} */
+
+.form-textarea {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  padding-left: 16px;
+  padding-right: 16px;
+
+  resize: none;
+  border: 1px solid rgba(33, 33, 33, 0.2);
+  border-radius: 4px;
+
+  transition: border-color var(--timing-function) var(--transition-duration);
+}
+
+.form-textarea + .form-label {
+  top: 20px;
+  left: 16px;
+}
+
+.form-textarea:focus + .form-label,
+.form-textarea:not(:placeholder-shown) + .form-label {
+  transform: translate(0px, -36px);
+  color: var(--primary-accent-color);
+}
+
+.form-textarea:focus::placeholder {
+  opacity: 1;
+}
+
+.form-textarea::placeholder {
+  opacity: 0;
+
+  font-size: 12px;
+  line-height: 1.17;
+  letter-spacing: 0.01em;
+
+  color: var(--placeholder-text-color);
+  transition: opacity var(--timing-function) var(--transition-duration);
+}
+
+.checkbox-field {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+  align-items: center;
+
+  cursor: pointer;
+}
+
+.checkbox {
+  /* -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none; */
+
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+
+.checkbox-label {
+  margin-left: 8px;
+
+  line-height: 1.71;
+}
+
+.checkbox-link {
+  color: var(--primary-accent-color);
+}
+
+.checkbox-icon {
+  display: inline-block;
+  width: 16px;
+  height: 15px;
+
+  border: 2px solid var(--secondary-text-color);
+  border-radius: 2px;
+  transition: background-color var(--timing-function) var(--transition-duration),
+    border-color var(--timing-function) var(--transition-duration),
+    transform var(--timing-function) var(--transition-duration);
+}
+
+.checkbox:checked + .checkbox-icon {
+  transform: scale(1.2);
+  border-color: transparent;
+  background-color: var(--primary-accent-color);
+  background-image: url("../images/modal/checkbox-icon.svg");
+  background-size: contain;
+  background-origin: border-box;
+}
+
+.modal .form-button {
+  margin-left: auto;
+  margin-right: auto;
 }

@@ -431,28 +431,189 @@
               </li>
             </ul>
           </div>
-          <div class="subscribe-container">
+          <form class="subscribe-form">
             <b class="text">Подпишитесь на рассылку</b>
-            <button class="subscribe-button" type="button">
-              Подписаться
-              <svg class="social-link-icon telegram">
-                <use href="./images/sprite.svg#icon-telegram"></use>
-              </svg>
-            </button>
-          </div>
+            <div class="footer-input-container">
+              <label class="footer-form-field">
+                <input
+                  class="email-input-field"
+                  type="email"
+                  name="mail"
+                  autocomplete="off"
+                />
+                <span class="footer-form-label">E-mail</span>
+              </label>
+
+              <!-- форма подписки на рассылку на Divах -->
+              <!-- <div class="footer-form-field">
+                <label class="footer-form-label" for="mail">E-mail</label>
+                <input
+                  class="email-input-field"
+                  type="email"
+                  name="mail"
+                  id="mail"
+                />
+              </div> -->
+
+              <button class="form-button" type="submit">
+                Подписаться
+                <svg class="social-link-icon telegram">
+                  <use href="./images/sprite.svg#icon-telegram"></use>
+                </svg>
+              </button>
+            </div>
+          </form>
         </div>
       </div>
     </footer>
+
     <!-- модальное окно -->
     <div class="backdrop is-hidden" data-modal>
-      <div class="modal">
+      <form class="modal js-speaker-form">
+        <b class="form-text">Оставьте свои данные, мы вам перезвоним</b>
+        <label class="form-field">
+          <input
+            class="form-input"
+            type="text"
+            name="name"
+            autocomplete="off"
+            placeholder=" "
+          />
+          <span class="form-label">Имя</span>
+          <svg class="modal-input-icon" width="12" height="12">
+            <use href="./images/sprite.svg#icon-name-input"></use>
+          </svg>
+        </label>
+        <label class="form-field">
+          <input
+            class="form-input"
+            type="tel"
+            name="tel"
+            autocomplete="off"
+            placeholder=" "
+          />
+          <span class="form-label">Телефон</span>
+          <svg class="modal-input-icon" width="14" height="14">
+            <use href="./images/sprite.svg#icon-tel-input"></use>
+          </svg>
+        </label>
+        <label class="form-field">
+          <input
+            class="form-input"
+            type="email"
+            name="mail"
+            autocomplete="off"
+            placeholder=" "
+          />
+          <span class="form-label">Почта</span>
+          <svg class="modal-input-icon" width="16" height="12">
+            <use href="./images/sprite.svg#icon-mail-input"></use>
+          </svg>
+        </label>
+
+        <!-- Инпуты на Divах -->
+        <!-- <div class="form-field">
+          <input
+            class="form-input"
+            type="text"
+            name="name"
+            id="name"
+            placeholder=" "
+          />
+          <label class="form-label" for="name">Имя</label>
+          <svg class="modal-input-icon" width="12" height="12">
+            <use href="./images/sprite.svg#icon-name-input"></use>
+          </svg>
+        </div>
+        <div class="form-field">
+          <input
+            class="form-input"
+            type="tel"
+            name="tel"
+            id="tel"
+            placeholder=" "
+          />
+          <label class="form-label" for="tel">Телефон</label>
+          <svg class="modal-input-icon" width="14" height="14">
+            <use href="./images/sprite.svg#icon-tel-input"></use>
+          </svg>
+        </div>
+        <div class="form-field">
+          <input
+            class="form-input"
+            type="email"
+            name="mail"
+            id="mail"
+            placeholder=" "
+          />
+          <label class="form-label" for="mail">Почта</label>
+          <svg class="modal-input-icon" width="16" height="12">
+            <use href="./images/sprite.svg#icon-mail-input"></use>
+          </svg>
+        </div> -->
+
+        <label class="form-field">
+          <textarea
+            class="form-textarea"
+            name="comment"
+            rows="6"
+            placeholder="Введите текст"
+          ></textarea>
+          <span class="form-label">Комментарий</span>
+        </label>
+
+        <!-- textarea на Divах -->
+        <!-- <div class="textarea-field">
+          <textarea
+            class="form-textarea"
+            name="comment"
+            id="comment"
+            rows="6"
+            placeholder="Введите текст"
+          ></textarea>
+          <label class="form-label" for="comment">Комментарий</label>
+        </div> -->
+
+        <label class="checkbox-field">
+          <input class="checkbox" type="checkbox" name="checkbox" value="" />
+          <span class="checkbox-icon"></span>
+          <span class="checkbox-label"
+            >Соглашаюсь с рассылкой и принимаю
+            <a class="link checkbox-link" href="">Условия договора</a>
+          </span>
+        </label>
+
+        <!-- <div class="checkbox-field">
+          <input type="checkbox" name="checkbox" value="" id="" />
+          <label class="checkbox-label" for="checkbox"
+            >Соглашаюсь с рассылкой и принимаю
+            <a class="link checkbox-link" href="">Условия договора</a></label
+          >
+        </div> -->
+        <button class="form-button" type="submit">
+          Отправить
+        </button>
+
         <button class="modal-close-button" type="button" data-modal-close>
           <svg class="modal-close-button-icon" width="11px" height="11px">
             <use href="./images/sprite.svg#icon-close-button"></use>
           </svg>
         </button>
-      </div>
+      </form>
     </div>
     <script src="./js/modal.js"></script>
+    <script>
+      (() => {
+        document
+          .querySelector(".js-speaker-form")
+          .addEventListener("submit", (e) => {
+            e.preventDefault();
+
+            new FormData(e.currentTarget).forEach((value, name) =>
+              console.log(`${name}: ${value}`)
+            );
+          });
+      })();
+    </script>
   </body>
 </html>

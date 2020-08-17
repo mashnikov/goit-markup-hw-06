@@ -344,15 +344,27 @@
               </li>
             </ul>
           </div>
-          <div class="subscribe-container">
+
+          <form class="subscribe-form">
             <b class="text">Подпишитесь на рассылку</b>
-            <button class="subscribe-button" type="button">
-              Подписаться
-              <svg class="social-link-icon telegram">
-                <use href="./images/sprite.svg#icon-telegram"></use>
-              </svg>
-            </button>
-          </div>
+            <div class="footer-input-container">
+              <label class="footer-form-field">
+                <input
+                  class="email-input-field"
+                  type="email"
+                  name="mail"
+                  autocomplete="off"
+                />
+                <span class="footer-form-label">E-mail</span>
+              </label>
+              <button class="form-button" type="submit">
+                Подписаться
+                <svg class="social-link-icon telegram">
+                  <use href="./images/sprite.svg#icon-telegram"></use>
+                </svg>
+              </button>
+            </div>
+          </form>
         </div>
       </div>
     </footer>
